@@ -2,71 +2,121 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>С 8 Марта!</title>
+<title>С 8 Марта ❤️</title>
+
 <style>
+
 body{
-    margin:0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg,#ff9a9e,#fad0c4);
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    color:white;
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+font-family:Arial;
+overflow:hidden;
 }
 
 .card{
-    background: rgba(255,255,255,0.15);
-    padding:40px;
-    border-radius:20px;
-    backdrop-filter: blur(10px);
+background:white;
+padding:40px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+cursor:pointer;
 }
 
 h1{
-    font-size:50px;
+color:#ff4d6d;
+font-size:40px;
 }
 
-p{
-    font-size:22px;
-    margin-top:20px;
+.message{
+display:none;
+margin-top:20px;
+font-size:20px;
+color:#444;
 }
 
-button{
-    margin-top:30px;
-    padding:15px 30px;
-    border:none;
-    border-radius:10px;
-    font-size:18px;
-    background:white;
-    color:#ff4d6d;
-    cursor:pointer;
+.flower{
+position:absolute;
+top:-50px;
+font-size:24px;
+animation:fall linear forwards;
 }
+
+@keyframes fall{
+to{
+transform:translateY(110vh);
+}
+}
+
+.heart{
+position:absolute;
+color:red;
+font-size:20px;
+animation:float 2s linear forwards;
+}
+
+@keyframes float{
+to{
+transform:translateY(-100px);
+opacity:0;
+}
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="card">
-<h1>🌸 С 8 Марта! 🌸</h1>
-
-<p>
-Пусть этот день принесёт радость,  
-улыбки и много счастья!  
-</p>
-
-<p>
-Спасибо, что ты есть ❤️
-</p>
-
-<button onclick="showMessage()">Нажми сюда</button>
-
+<div class="card" onclick="openCard()">
+<h1>🌸 С 8 Марта 🌸</h1>
+<div class="message" id="msg">
+Ты самая прекрасная ❤️<br><br>
+Пусть каждый день приносит счастье,<br>
+улыбки и тепло 💐
+</div>
 </div>
 
+<!-- музыка -->
+<iframe width="0" height="0"
+src="https://www.youtube.com/embed/0w8uG9kYp5U?autoplay=1&loop=1&playlist=0w8uG9kYp5U"
+frameborder="0"
+allow="autoplay">
+</iframe>
+
 <script>
-function showMessage(){
-alert("Ты самая прекрасная! 💐");
+
+function openCard(){
+document.getElementById("msg").style.display="block";
 }
+
+// падающие цветы
+setInterval(()=>{
+let flower=document.createElement("div")
+flower.innerHTML="🌸"
+flower.className="flower"
+flower.style.left=Math.random()*100+"vw"
+flower.style.animationDuration=3+Math.random()*5+"s"
+document.body.appendChild(flower)
+
+setTimeout(()=>flower.remove(),8000)
+
+},300)
+
+// сердечки при клике
+document.addEventListener("click",e=>{
+let heart=document.createElement("div")
+heart.className="heart"
+heart.innerHTML="❤"
+heart.style.left=e.clientX+"px"
+heart.style.top=e.clientY+"px"
+document.body.appendChild(heart)
+
+setTimeout(()=>heart.remove(),2000)
+})
+
 </script>
 
 </body>
