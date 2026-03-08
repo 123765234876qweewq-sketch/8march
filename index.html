@@ -3,7 +3,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Для моей принцессы ❤️</title>
+<title>С 8 Марта, мама ❤️</title>
 
 <style>
 
@@ -13,58 +13,53 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#ff758c,#ff7eb3);
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
 font-family:Arial;
 overflow:hidden;
 }
 
-/* конверт */
+/* кнопка открытки */
 
-.envelope{
-width:320px;
-height:200px;
-background:#ff4d6d;
-position:relative;
-border-radius:10px;
-cursor:pointer;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-font-size:24px;
+.card{
+background:white;
+padding:40px;
+border-radius:20px;
 text-align:center;
-box-shadow:0 15px 40px rgba(0,0,0,0.3);
-transition:0.6s;
+box-shadow:0 15px 40px rgba(0,0,0,0.25);
+cursor:pointer;
+font-size:24px;
+color:#ff4d6d;
+transition:0.5s;
 }
+
+/* письмо */
 
 .letter{
 position:absolute;
 background:white;
 color:#444;
-width:300px;
-padding:30px;
-border-radius:15px;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%) scale(0);
+width:320px;
+padding:35px;
+border-radius:20px;
 text-align:center;
-font-size:22px;
+font-size:20px;
 line-height:1.6;
-box-shadow:0 15px 40px rgba(0,0,0,0.3);
+box-shadow:0 20px 50px rgba(0,0,0,0.3);
+transform:scale(0);
 transition:0.6s;
 }
 
 /* анимация текста */
 
-.love{
+.title{
 font-size:28px;
-color:#ff2e63;
+color:#ff4d6d;
 animation:pulse 1.5s infinite;
 }
 
 @keyframes pulse{
 0%{transform:scale(1)}
-50%{transform:scale(1.15)}
+50%{transform:scale(1.1)}
 100%{transform:scale(1)}
 }
 
@@ -97,6 +92,7 @@ to{
 transform:translateY(-120px);
 opacity:0;
 }
+
 }
 
 </style>
@@ -104,29 +100,34 @@ opacity:0;
 
 <body>
 
-<div class="envelope" onclick="openLetter()" id="env">
-💌 Нажми чтобы открыть
+<div class="card" onclick="openLetter()" id="card">
+💌 Нажми чтобы открыть поздравление
 </div>
 
 <div class="letter" id="letter">
-<div class="love">❤️ С 8 Марта ❤️</div>
+<div class="title">🌸 С 8 Марта, мама! 🌸</div>
 <br>
-я тебя люблю несмотря не на что зайка,<br>
-просто обожаю моя принцесса 💖
-</div>
+Дорогая мама ❤️<br><br>
 
-<!-- музыка -->
-<audio autoplay loop>
-<source src="boleyu.mp3" type="audio/mpeg">
-</audio>
+Спасибо тебе за заботу,  
+любовь и поддержку.  
+
+Ты самый важный  
+и родной человек в моей жизни.  
+
+Пусть каждый день приносит  
+тебе радость, тепло  
+и много счастливых моментов 💐
+
+</div>
 
 <script>
 
 /* открыть письмо */
 
 function openLetter(){
-document.getElementById("env").style.transform="scale(0)";
-document.getElementById("letter").style.transform="translate(-50%,-50%) scale(1)";
+document.getElementById("card").style.display="none"
+document.getElementById("letter").style.transform="scale(1)"
 }
 
 /* падающие лепестки */
@@ -136,13 +137,13 @@ let petal=document.createElement("div")
 petal.className="petal"
 petal.innerHTML="🌸"
 petal.style.left=Math.random()*100+"vw"
-petal.style.animationDuration=4+Math.random()*6+"s"
+petal.style.animationDuration=4+Math.random()*5+"s"
 
 document.body.appendChild(petal)
 
 setTimeout(()=>petal.remove(),9000)
 
-},250)
+},200)
 
 /* сердечки при клике */
 
@@ -164,5 +165,6 @@ setTimeout(()=>heart.remove(),2000)
 </body>
 </html>
 ```
+
 
 
