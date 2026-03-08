@@ -3,7 +3,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>С 8 Марта, мама ❤️</title>
+<title>Для моей любимой ❤️</title>
 
 <style>
 
@@ -13,12 +13,10 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
 font-family:Arial;
 overflow:hidden;
 }
-
-/* кнопка открытки */
 
 .card{
 background:white;
@@ -29,31 +27,28 @@ box-shadow:0 15px 40px rgba(0,0,0,0.25);
 cursor:pointer;
 font-size:24px;
 color:#ff4d6d;
-transition:0.5s;
 }
-
-/* письмо */
 
 .letter{
 position:absolute;
 background:white;
 color:#444;
-width:320px;
+width:340px;
+max-height:80vh;
+overflow:auto;
 padding:35px;
 border-radius:20px;
 text-align:center;
-font-size:20px;
+font-size:19px;
 line-height:1.6;
 box-shadow:0 20px 50px rgba(0,0,0,0.3);
 transform:scale(0);
 transition:0.6s;
 }
 
-/* анимация текста */
-
 .title{
 font-size:28px;
-color:#ff4d6d;
+color:#ff2e63;
 animation:pulse 1.5s infinite;
 }
 
@@ -62,8 +57,6 @@ animation:pulse 1.5s infinite;
 50%{transform:scale(1.1)}
 100%{transform:scale(1)}
 }
-
-/* лепестки */
 
 .petal{
 position:absolute;
@@ -78,8 +71,6 @@ transform:translateY(110vh) rotate(360deg);
 }
 }
 
-/* сердечки */
-
 .heart{
 position:absolute;
 color:red;
@@ -92,7 +83,25 @@ to{
 transform:translateY(-120px);
 opacity:0;
 }
+}
 
+/* фотографии */
+
+.photo{
+position:absolute;
+width:120px;
+height:120px;
+object-fit:cover;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+animation:fadeIn 2s forwards;
+opacity:0;
+}
+
+@keyframes fadeIn{
+to{
+opacity:1;
+}
 }
 
 </style>
@@ -101,23 +110,21 @@ opacity:0;
 <body>
 
 <div class="card" onclick="openLetter()" id="card">
-💌 Нажми чтобы открыть поздравление
+💌 Нажми чтобы открыть
 </div>
 
 <div class="letter" id="letter">
-<div class="title">🌸 С 8 Марта, мама! 🌸</div>
+
+<div class="title">❤️ С 8 Марта, любимая ❤️</div>
 <br>
-Дорогая мама ❤️<br><br>
 
-Спасибо тебе за заботу,  
-любовь и поддержку.  
+любимая поздравляю тебя с 8 марта, ты у меня самая лучшая и самая любимая на свете.  
 
-Ты самый важный  
-и родной человек в моей жизни.  
+Да я знаю что у нас бывают разногласия и иногда справедливые а иногда и не очень, но я тебя все равно люблю больше всего на свете котеночек и хочу жизнь свою построить только с тобой.  
 
-Пусть каждый день приносит  
-тебе радость, тепло  
-и много счастливых моментов 💐
+Ты для меня самый важный человек на свете, я тебя люблю люблю люблю больше жизни детка, спасибо что ты есть рядом со мной.  
+
+Поздравляю тебя с 8 марта малыш ❤️❤️❤️❤️❤️❤️🥹🥹🥹🥹🥹
 
 </div>
 
@@ -126,11 +133,15 @@ opacity:0;
 /* открыть письмо */
 
 function openLetter(){
+
 document.getElementById("card").style.display="none"
 document.getElementById("letter").style.transform="scale(1)"
+
+showPhotos()
+
 }
 
-/* падающие лепестки */
+/* лепестки */
 
 setInterval(()=>{
 let petal=document.createElement("div")
@@ -145,7 +156,7 @@ setTimeout(()=>petal.remove(),9000)
 
 },200)
 
-/* сердечки при клике */
+/* сердечки */
 
 document.addEventListener("click",e=>{
 let heart=document.createElement("div")
@@ -160,11 +171,44 @@ setTimeout(()=>heart.remove(),2000)
 
 })
 
+/* появление фотографий */
+
+function showPhotos(){
+
+const photos = [
+"photo1.jpg",
+"photo2.jpg",
+"photo3.jpg",
+"photo4.jpg",
+"photo5.jpg"
+]
+
+let i=0
+
+let interval=setInterval(()=>{
+
+if(i>=photos.length){
+clearInterval(interval)
+return
+}
+
+let img=document.createElement("img")
+img.src=photos[i]
+img.className="photo"
+
+img.style.left=Math.random()*90+"vw"
+img.style.top=Math.random()*90+"vh"
+
+document.body.appendChild(img)
+
+i++
+
+},1500)
+
+}
+
 </script>
 
 </body>
 </html>
 ```
-
-
-
